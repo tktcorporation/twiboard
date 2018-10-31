@@ -1,0 +1,189 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bulma";
+
+html {
+    -webkit-font-smoothing: initial;
+}
+
+body {
+    padding: 50px 13px 20px 13px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    background-color: #e6ecf0;
+}
+
+header {
+    height: 50px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+a {
+    color: black;
+}
+
+a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.header-logo {
+    font-size: 30px;
+}
+
+.header-search form {
+    margin: -1px 0 0 0;
+    font-size: 12px;
+    width: 400px;
+}
+
+.search-input {
+    background-color: #f5f8fa;
+    border-radius: 16px;
+    border: 1px solid #e6ecf0;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #14171a;
+    display: block;
+    font-size: 12px;
+    height: 32px;
+    line-height: 16px;
+    padding: 8px 32px 8px 12px;
+    transition: all .2s ease-in-out;
+    width: 100%;
+}
+
+.search-input:focus {
+    border: 2px solid #1da1f2;
+}
+
+.list {
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.flash {
+    background-color: #7CCFD9;
+}
+
+.flash p {
+    text-align: center;
+}
+
+.user_icon {
+    margin: 5px 0 0 20px;
+    padding: 0;
+    vertical-align: middle;
+    border-radius: 10px;
+    height: 42px;
+    width: 42px;
+    border: solid 1px #ddd;
+}
+
+.relative {
+    position: relative;
+}
+
+.dynamics-nav {
+    position: absolute;
+    top: 60px;
+    right: 0px;
+    width: 200px;
+    transform: matrix3d(0.1, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 1);
+    opacity: 0;
+    background-color: white;
+    margin-top: 0px;
+    transform-origin: 80% 5px;
+}
+
+.dynamics-nav ul {
+    padding: 10px;
+}
+
+.dynamics-nav li {
+    text-align: center;
+    clear: both;
+    line-height: 20px;
+    padding: 5px 10px;
+    list-style: none;
+    display: block;
+}
+
+.dynamics-nav li:hover {
+    background-color: #ddd;
+}
+
+.caret {
+    position: absolute;
+    top: -9px;
+    right: 12px;
+    width: 1px;
+    height: 1px;
+    float: left;
+    color: white;
+    overflow: hidden;
+    border-bottom: 9px solid #fff;
+    border-bottom-color: #fff;
+    border-left: solid 9px transparent;
+    border-right: solid 9px transparent;
+    line-height: initial;
+}
+
+.pagination {
+    margin: 20px 0 10px 0;
+}
+
+.current {
+    padding: 6px 13px;
+    background-color: #ddd;
+    border-radius: 3px;
+    background-color: #aaa;
+}
+
+.page a {
+    padding: 8px 12px;
+    background-color: #ddd;
+    border-radius: 3px;
+}
+
+.page a:hover {
+    background-color: #eee;
+}
+
+.next a {
+    padding: 10px;
+    background-color: #CEF9DC;
+    border: solid 3px #B1F9D0;
+    border-radius: 5px;
+}
+.next a:hover {
+    background-color: #B1F9D0;
+}
+.last a {
+    padding: 10px;
+    background-color: #CEF9DC;
+    border: solid 3px #B1F9D0;
+    border-radius: 5px;
+}
+.last a:hover {
+    background-color: #B1F9D0;
+}

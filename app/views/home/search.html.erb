@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="columns is-centered">
+    <div class="column is-7">
+      <h1 class="is-size-3">詳細検索</h1>
+      <%= form_tag "/advanced_search", method: :get do %>
+        <div class="field">
+          <label class="label">タイトル</label>
+          <div class="control">
+            <%= text_field_tag :board, "", class: 'input', placeholder: 'title' %>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">ジャンル</label>
+          <div class="control">
+            <div class="select">
+              <%= select_tag :genre, options_for_select(@genre_array_plus)%>
+            </div>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <%= submit_tag '検索', class: "button is-link" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

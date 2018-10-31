@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="columns is-centered">
+        <div class="colum is-3">
+            <div class="news-box">
+                <div class="news">
+                    <p>更新情報：サイト再開</p>
+                    <p>次回追加予定：参加板一覧表示機能など</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="title">
+        <h1>Twitter掲示板</h1>
+    </div>
+    <div class="columns is-centered">
+        <div class="colum is-5">
+            <div class="news">
+                <p>Twitterアカウントを利用した掲示板です。</p>
+                <p>（開発途中のため、予期せぬ不具合、データの消失、等が発生する場合があります。）</p>
+            </div>
+        </div>
+    </div>
+    <div class="boards-index">
+        <p>板一覧</p>
+    </div>
+    <div class="columns is-centered">
+        <%= form_tag "/board/search", class: "column is-5", method: :get do %>
+            <p class="control has-icons-left">
+                <%= search_field_tag :search, params[:search], placeholder: "掲示板を検索", name: "keyword", class: "input is-info" %>
+                <span class="icon is-small is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+            </p>
+        <% end %>
+    </div>
+    <div class="columns is-centered">
+        <div class="column is-7 is-size-6">
+            <div class="boards-box">
+                <div class="board">
+                    <p>
+                        <%= link_to "", "/board/0" %><span>2018-7 | 意見箱</span>
+                    </p>
+                </div>
+                <% @board.each do |board| %>
+                    <div class="board">
+                        <p>
+                            <%= link_to "", "/board/#{board.id}" %><span><%= board.created_at.strftime("%Y-%m-%d") %> | <%= board.title %></span>
+                        </p>
+                    </div>
+                <% end %>
+                <%= paginate @board %>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-centered">
+        <div class="column is-7">
+            <div class="is-centered is-size-4">新規板作成</div>
+            <%= form_tag "/board/new", method: :post do %>
+                <%= text_field_tag :title, params[:title], class: "input", placeholder: "みんなで話を始めよう" %>
+                <%= select_tag :genre, options_for_select(@genre_array), class: 'select' %>
+                <%= submit_tag "新規作成", class: "button is-info" %>
+            <% end %>
+        </div>
+    </div>
+</div>

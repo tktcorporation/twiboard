@@ -1,0 +1,49 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.title {
+    text-align: center;
+}
+
+.news-box {
+    padding-top: 25px;
+}
+
+.news {
+    padding: 10px;
+    background: white;
+    box-shadow: 2px 2px #ddd;
+    p {
+      margin: 10px;
+    }
+}
+
+.boards-index {
+    margin: 10px 0 10px 0;
+    font-size: 28px;
+    text-align: center;
+}
+
+.boards-box {
+    padding: 25px;
+    background-color: white;
+    border: solid 2px #ddd;
+}
+
+.board {
+    padding: 16px 10px 16px 20px;
+    border: solid 2px #ddd;
+    position: relative;
+    a {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-indent: -999px;
+    }
+}
+
+.board:hover {
+    background-color: #EBF9FB;
+}

@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="is-centered columns">
+    <div class="column is-size-4 is-4">
+      <p>トレンド</p>
+    </div>
+  </div>
+  <div class="columns is-centered">
+    <div class="boards-box column is-7 is-size-6">
+      <% @boards.each do |board| %>
+        <div class="board">
+          <p><%= link_to "", "/board/#{board.id}" %><span><%= board.created_at.strftime("%Y-%m-%d") %>  <%= board.title %></span></p>
+        </div>
+      <% end %>
+      <%= paginate @boards %>
+    </div>
+  </div>
+</div>

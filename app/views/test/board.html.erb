@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="board-title">
+        <h1><%= @board.title %></h1>
+    </div>
+    <div class="post-box">
+        <% if @post == [] %>
+            <p>まだ誰もトークに参加していません</p>
+        <% end %>
+        <% @post.each_with_index do |post, count| %>
+          <div class="post-cover">
+            <div class="post">
+            </div>
+          </div>
+        <% end %>
+        <div class="form-box">
+            <% if @current_user %>
+                <%= image_tag @current_user.image_url, class: "push_icon" %>
+                <%= form_tag "/board/#{@board.id}/create", method: :post, class: "form" do %>
+                  <%= text_area_tag :content, params[:search],placeholder: "投稿内容を入力" %>
+                  <%= submit_tag "投稿", class: "submit" %>
+                <% end %>
+            <% else %>
+                <div class = "need-login" >
+                    <p>投稿にはログインが必要です</p>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

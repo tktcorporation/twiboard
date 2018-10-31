@@ -1,0 +1,7 @@
+<p>linebot</p>
+<%= link_to "テスト送信", "/linebot/test_push", class: "button is-primary" %>
+<%= form_tag "/linebot/push", method: :post do %>
+    <%= text_field_tag :message, "", placeholder: "メッセージ", class: "input" %>
+    <%= submit_tag "送信", class: "button is-info" %>
+<% end %>
+

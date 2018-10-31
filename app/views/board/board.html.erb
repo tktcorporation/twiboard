@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="board-title">
+        <h1 class="is-size-3"><%= @board.title %></h1>
+        <h2 class="is-size-5">ジャンル：<%= @genre %></h2>
+    </div>
+    <div class="columns">
+        <% if @current_user %>
+            <div class="participation-box is-hidden-mobile column is-2">
+                <div class="is-size-5">
+                    参加中
+                </div>
+                <div class="participations-box is-size-6">
+                    <% @participating_boards.each do |board| %>
+                        <div class="participated-board">
+                            <%= link_to "", "/board/#{board.id}/" %>
+                            <span><%= board.title %></span>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="column is-3"></div>
+        <% end %>
+        <div class="post-box column is-9">
+            <p>
+                参加者：
+                <% @participants.each do |participant| %>
+                    <span> <%= image_tag "#{participant[1]}", class: "post_icon" %><%= participant[0] %> </span>
+                <% end %>
+            </p>
+            <% if @post == [] %>
+                <p>まだ誰もトークに参加していません</p>
+            <% elsif @post.count > 5 %>
+                <a class="button" id="scroll_bottom">
+                    <span class="icon"><i class="fas fa-angle-down fa-lg"></i></span>
+                </a>
+            <% end %>
+            <% @post.each_with_index do |post, count| %>
+              <div class="post-cover">
+                <div class="post">
+                    <p>
+                        <%= count + 1 %> : <%= image_tag @image_url[count], class: "post_icon" %> <span class="name"> <%= @username[count] %></span> <span class="timestamp"><%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></span></p>
+                    <p>
+                        <%= post.content %>
+                    </p>
+                </div>
+              </div>
+            <% end %>
+            <div class="form-box">
+                <% if @current_user %>
+                    <%= image_tag @current_user_image_url, class: "push_icon" %>
+                    <%= form_tag "/board/#{@board.id}/create", method: :post, class: "form" do %>
+                      <%= text_area_tag :content, params[:search],placeholder: "トークに参加しよう",class: "textarea is-info" %>
+                      <%= submit_tag "投稿", class: "button is-primary" %>
+                    <% end %>
+                <% else %>
+                    <div class = "need-login" >
+                        <p>投稿にはログインが必要です</p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

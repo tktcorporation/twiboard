@@ -1,0 +1,11 @@
+<h1><%= @board.title %></h1>
+<% @post.each do |post| %>
+  <p><%= post.content %></p>
+<% end %>
+
+  <%= form_tag "/board/#{@board.id}/testcreate", method: :post do %>
+   <%= text_field_tag :content, params[:search],placeholder: "投稿内容を入力" %>
+   <%= submit_tag "投稿"%>
+  <% end %>
+
+

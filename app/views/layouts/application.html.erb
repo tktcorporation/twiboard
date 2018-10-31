@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>TwitterBoard</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<header class="navbar is-white is-fixed-top">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="/" class="is-size-3">TwiBoard</a>
+            <% if @current_user %>
+                <%= image_tag("#{@current_user_image_url}", class: "user_icon is-hidden-desktop navbar-item") %>
+            <% else %>
+                <%= link_to("ログイン", '/login', class: "navbar-item is-hidden-desktop") %>
+            <% end %>
+            <div class="navbar-burger burger" data-target="navMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="navbar-menu is-hidden-desktop" id="navMenu">
+            <a href="/search" class="navbar-item">詳細検索</a>
+            <a href="/board/trend" class="navbar-item">トレンド</a>
+            <a href="/" class="navbar-item">検索</a>
+            <a href="https://twitter.com/" class="navbar-item">設定</a>
+            <% if @current_user %>
+                <a href="/board/participating" class="navbar-item">参加中</a>
+                <a href="/users/logout" class="navbar-item">ログアウト</a>
+            <% else %>
+                <%= link_to("ログイン", '/login', class: "navbar-item") %>
+            <% end %>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <%= form_tag "/board/search", class: "navbar-item", method: :get do %>
+                    <p>
+                        <%= search_field_tag :search, params[:search], placeholder: "掲示板を検索", name: "keyword", class: "search-input" %>
+                    </p>
+                <% end %>
+            </div>
+            <div class="navbar-end">
+                <a href="/search" class="navbar-item">詳細検索</a>
+                <a href="/board/trend" class="navbar-item">トレンド</a>
+                <a href="https://twitter.com/" class="navbar-item">設定</a>
+                <% if @current_user %>
+                    <div class="relative">
+                    <%= image_tag("#{@current_user_image_url}", class: "user_icon navbar-item", id: "show-list") %>
+                        <nav class="dynamics-nav">
+                            <b class="caret"></b>
+                            <ul>
+                                <li class="dynamics-li">
+                                    <%= link_to "ログアウト", "/users/logout" %>
+                                </li>
+                                <li class="dynamics-li">
+                                    <%= link_to "参加中", "/board/participating" %>
+                                </li>
+                                <li class="dynamics-li">ぽこ</li>
+                                <li class="dynamics-li">ぽこ</li>
+                                <li class="dynamics-li">ぽこ</li>
+                                <li class="dynamics-li">ぽこ</li>
+                            </ul>
+                        </nav>
+                </div>
+                <% else %>
+                    <%= link_to("ログイン", '/login', class: "navbar-item") %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</header>
+<% if flash[:notice] %>
+    <div class="flash">
+        <p>
+            <%= flash[:notice] %>
+        </p>
+    </div>
+<% end %>
+
+    <body>
+        <%= yield %>
+    </body>
+
+</html>
