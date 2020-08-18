@@ -48,7 +48,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "bulma-rails"
 
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari', '~> 1.2.1'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
